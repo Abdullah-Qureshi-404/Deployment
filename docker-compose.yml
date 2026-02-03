@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: backend
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env   
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    depends_on:
+      - backend
+    ports:
+      - "3001:3000"
+
+volumes:
+  mongo-data:
+
+
