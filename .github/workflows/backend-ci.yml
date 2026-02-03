@@ -28,4 +28,4 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: abdullahqureshi404
+          tags: abdullahqureshi404/taskmanagement-backend
